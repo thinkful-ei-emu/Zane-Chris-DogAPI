@@ -28,19 +28,19 @@ function getDogImages(dogNumb) {
   
 }
     
-function pullData(JsonData){
-  JsonData.forEach(dog=>{
-
-  });
-
+function pullData(item){
+  return `
+  <li class="dog-images"><img src="${item}" class="results-img"></li>
+  `;
 }
 
 //display the dog Amounts
 function displayResults(responseJson) {
   console.log('`displayResults` ran');
   console.log(responseJson);
-
- 
+  const results = responseJson.message.map(item => pullData(item));
+  $('.js-dog-images').html(results);
+  
   //display the results section
   $('.results').removeClass('hidden');
 }

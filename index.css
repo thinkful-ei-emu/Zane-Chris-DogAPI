@@ -2,11 +2,15 @@
     box-sizing: border-box;
   }
   
-  .images-list {
+  .results-img {
     max-width: 600px;
     margin: 0 auto;
   }
   
   .hidden {
     display: none;
+  }
+
+  .images-list {
+      list-style: none;
   }
