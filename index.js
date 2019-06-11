@@ -9,9 +9,6 @@ function handleSubmitClick() {
     const dogNumb = $('.js-num-input').val();
     console.log(dogNumb);
     getDogImages(dogNumb);
-    
-    
-    
   });
 }
 
