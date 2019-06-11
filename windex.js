@@ -6,7 +6,7 @@ function handleSubmitClick() {
   $('#js-breed-form').submit(event => {
     event.preventDefault();
     console.log('`handleSubmitClick` ran');
-    const dogBreed = $('.select-dog-selector').val();
+    const dogBreed = $('.dog-breed-search').val();
     console.log(dogBreed);
     getDogImages(dogBreed);
     
@@ -20,10 +20,15 @@ function getDogImages(dogBreed) {
   console.log('`getDogImages` ran');
   console.log();
   let fetchNow = fetch(`https://dog.ceo/api/breed/${dogBreed}/images/random`)
-    .then(response => response.json())
+    .then(response =>{
+      if(response.ok){ 
+        return response.json();
+      }
+      throw new Error (response.statusText)
+    })
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+    .catch(error => alert(`Breed Not Found. Please enter Another breed.${error.message}`));
     
 }
 
